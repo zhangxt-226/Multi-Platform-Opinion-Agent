@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>美伊冲突多平台舆情分析 Agent</title>
+<meta name="description" content="基于 LangChain create_agent 的多平台舆情分析 Agent：微博 / 知乎 / YouTube 三平台评论采集、清洗、四维分析与可视化看板。">
+<style>
+  :root{
+    --bg:#f5f7fa; --card:#fff; --ink:#1f2d3d; --sub:#5b6b7c;
+    --line:#e6ebf1; --accent:#2f5bea; --accent-2:#0e9f6e;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font:15px/1.7 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif;
+  }
+  .wrap{max-width:1080px; margin:0 auto; padding:48px 24px 64px;}
+  header{text-align:center; margin-bottom:36px;}
+  h1{margin:0 0 10px; font-size:30px; letter-spacing:.3px;}
+  .lead{margin:0 auto; max-width:720px; color:var(--sub);}
+  .kpis{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin:32px 0;}
+  .kpi{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px 18px;}
+  .kpi b{display:block; font-size:24px; font-weight:700; line-height:1.3;}
+  .kpi span{color:var(--sub); font-size:13px;}
+  .kpi:nth-child(1) b{color:var(--accent);}
+  .kpi:nth-child(4) b{color:var(--accent-2);}
+  .btns{display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin:28px 0 8px;}
+  a.btn{
+    display:inline-block; padding:10px 22px; border-radius:8px; text-decoration:none;
+    font-weight:600; font-size:14px; border:1px solid transparent; transition:.15s;
+  }
+  a.primary{background:var(--accent); color:#fff;}
+  a.primary:hover{background:#2549c4;}
+  a.ghost{background:#fff; color:var(--ink); border-color:var(--line);}
+  a.ghost:hover{border-color:#c7d2e0;}
+  .shot{
+    margin:32px 0 0; background:var(--card); border:1px solid var(--line);
+    border-radius:12px; padding:10px; box-shadow:0 2px 12px rgba(31,45,61,.06);
+  }
+  .shot img{display:block; width:100%; border-radius:6px;}
+  .cap{text-align:center; color:var(--sub); font-size:13px; margin-top:14px;}
+  h2{font-size:17px; margin:44px 0 14px; padding-left:10px; border-left:3px solid var(--accent);}
+  .tags{display:flex; flex-wrap:wrap; gap:8px;}
+  .tags span{
+    background:#eef2ff; color:#3349a8; border-radius:999px;
+    padding:5px 13px; font-size:13px; font-weight:500;
+  }
+  .note{
+    margin-top:36px; padding:16px 18px; background:#fff; border:1px solid var(--line);
+    border-radius:10px; color:var(--sub); font-size:13.5px;
+  }
+  .note b{color:var(--ink);}
+  footer{text-align:center; color:#93a1b1; font-size:12.5px; margin-top:40px;}
+  @media (max-width:720px){
+    .wrap{padding:32px 16px 48px;}
+    h1{font-size:23px;}
+    .kpis{grid-template-columns:repeat(2,1fr);}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>美伊冲突多平台舆情分析 Agent</h1>
+    <p class="lead">
+      微博 / 知乎 / YouTube 三平台评论的采集、清洗、四维分析与可视化，
+      由 LLM Agent 通过 9 个工具自主编排，而非写死的脚本菜单。
+    </p>
+  </header>
+
+  <div class="kpis">
+    <div class="kpi"><b>4,463</b><span>清洗后有效评论</span></div>
+    <div class="kpi"><b>3</b><span>平台（微博 / 知乎 / YouTube）</span></div>
+    <div class="kpi"><b>129</b><span>天时间跨度</span></div>
+    <div class="kpi"><b>9</b><span>Agent 可调用工具</span></div>
+  </div>
+
+  <div class="btns">
+    <a class="btn primary" href="outputs/%E8%AF%84%E8%AE%BA%E5%88%86%E6%9E%90%E7%9C%8B%E6%9D%BF.html">打开交互式看板 →</a>
+    <!-- 建好仓库后把下面这行的 href 换成你的仓库地址，并去掉注释
+    <a class="btn ghost" href="https://github.com/你的用户名/us-iran-opinion-agent">源码与 README</a>
+    -->
+  </div>
+
+  <div class="shot">
+    <img src="docs/preview.png" alt="舆情分析看板预览：话题分布、情感分布、双语词云、时间趋势、分期聚合与话题演化">
+  </div>
+  <p class="cap">8 个图表面板：话题分布 / 情感分布 / 内外网双语词云 / 时间趋势 / 分期聚合 / 话题演化动态词云</p>
+
+  <h2>技术栈</h2>
+  <div class="tags">
+    <span>Python 3.13</span>
+    <span>LangChain 1.x · create_agent</span>
+    <span>Tool Calling / Function Calling</span>
+    <span>Prompt Engineering</span>
+    <span>pandas</span>
+    <span>jieba</span>
+    <span>ECharts + echarts-wordcloud</span>
+    <span>requests（无 Selenium）</span>
+  </div>
+
+  <h2>它解决什么问题</h2>
+  <p class="lead" style="text-align:left;max-width:none;">
+    把原来「人按菜单点 13 次」的脚本流水线，改成「说一句话，模型自己决定调哪几个工具」。
+    工具粒度拆到 9 个原子步骤，模型才有跳步与补跑的空间；工具异常统一转成中文可读提示返回而非抛错，
+    模型拿到提示能自我纠偏；提示词里固化「数字只能来自工具返回」，抑制数据幻觉；
+    同时保留一条不依赖 LLM 的确定性流水线，模型不可用时仍能完整交付。
+  </p>
+
+  <div class="note">
+    <b>关于数据：</b>仓库不包含原始评论 CSV。微博/知乎评论含平台用户昵称与用户 ID，不便于公开。
+    看板与 <code>outputs/analysis_result.json</code> 中的数字均为真实运行结果（聚合统计 + 9 条匿名片段）。
+    复现方式见 README 的「关于数据」一节。
+  </div>
+
+  <footer>数据来源：微博 / 知乎 / YouTube 公开评论 · 仅用于学术与作品集分析</footer>
+</div>
+</body>
+</html>
