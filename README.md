@@ -1,5 +1,9 @@
 # US-Iran 多平台舆情分析 Agent
 
+[![Live Demo](https://img.shields.io/badge/🔗_在线交互看板-点击查看-brightgreen)](https://zhangxt-226.github.io/Multi-Platform-Opinion-Agent/)
+[![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/zhangxt-226/Multi-Platform-Opinion-Agent)](#)
+
+> 点击上方绿色徽章即可查看交互式可视化看板。
 把「爬 → 洗 → 合 → 析 → 图」的脚本流水线，改造为一个**由大模型自主编排的 LangChain Agent**。
 
 数据源是微博、知乎、YouTube 三个平台关于美伊冲突的评论；Agent 根据自然语言指令自行决定
