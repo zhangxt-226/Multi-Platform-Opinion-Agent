@@ -1,0 +1,19 @@
+# Agent 编排
+langchain>=1.0,<2.0
+langchain-core>=1.0,<2.0
+langchain-openai>=1.0,<2.0
+langgraph>=1.0,<2.0
+
+# 数据处理
+pandas>=2.2
+jieba>=0.42
+
+# 采集
+requests>=2.31
+lxml>=5.0
+
+# 可视化
+pyecharts>=2.0
+
+# 配置
+python-dotenv>=1.0
